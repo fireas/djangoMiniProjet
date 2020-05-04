@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Gargouri Web Site || My CV
+{% endblock title %}
+
+{% block content %}
+<main>
+    <div class="container">
+
+      <!--Section: Main info-->
+      <section class="mt-5 wow fadeIn">
+
+        <!--Grid row-->
+        <div class="row">
+
+          <!--Grid column-->
+          <div class="col-md-6 mb-4">
+
+            <img src="{% static 'img/firas2.jpg'%}" class="img-fluid z-depth-1-half"
+              alt="">
+
+          </div>
+          
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 px-4">
+
+            <h3 class="h3 mb-3 text-center">Summary</h3>
+            <p>
+                {{info.summary}}
+            </p>
+
+          </div>
+          <!--/Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+      </section>
+      <!--Section: Main info-->
+
+      <hr class="my-5">
+
+      <!--Section: Main features & Quick Start-->
+      <section>
+        <h3 class="h3 text-center mb-5">Personnal Informations</h3>
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+            
+          <!--Grid column-->
+          <div class="col-md-6 mb-4">
+
+            <!-- Main heading -->
+            <div class="row wow fadeIn">
+                <div class="col-md-3">
+                    <p> <strong>First Name:</strong></p>
+                </div>
+                <div class="col-md-8">
+                    <ul>
+                        {{info.firstName}}
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <p> <strong>Last Name:</strong></p>
+                </div>
+                <div class="col-md-8">
+                    <ul>
+                        {{info.lastName}}
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <p> <strong>Email:</strong></p>
+                </div>
+                <div class="col-md-8">
+                    <ul>
+                        {{info.email}}
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <p> <strong>Age:</strong></p>
+                </div>
+                <div class="col-md-8">
+                    <ul>
+                        {{info.age}} Years Old
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <p> <strong>Address:</strong></p>
+                </div>
+                <div class="col-md-8">
+                    <ul>
+                        {{info.Address}}
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <p> <strong>Phone number:</strong></p>
+                </div>
+                <div class="col-md-8">
+                    <ul>
+                        {% for pho in phone %}
+                        <li>{{pho.phoneNumber}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+
+          </div>
+          <!--Grid column-->
+          
+          <!--Grid column-->
+          <div class="col-lg-4 col-md-6 px-4">
+              
+
+            <!--row-->
+            <div class="row">
+                <div class="row wow fadeIn">
+                    <div class="col-md-3">
+                        <p> <strong>Laguages:</strong></p>
+                    </div>
+                    <div class="col-md-8">
+                        <ul>
+                            {% for lan in langua %}
+                            <li>{{lan.language}} {{lan.percentage}}%</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p> <strong>Skills:</strong></p>
+                    </div>
+                    <div class="col-md-8">
+                        <ul>
+                            {% for skill in skills %}
+                            <li>{{skill.skillName}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <p> <strong>Hobbies:</strong></p>
+                    </div>
+                    <div class="col-md-8">
+                        <ul>
+                            {% for hobby in hobbies %}
+                            <li>{{hobby.hobbyInfo}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!--/row-->
+            <div style="height:30px"></div>
+
+            <div style="height:30px"></div>
+
+          </div>
+          <!--/Grid column-->
+
+
+        </div>
+        <!--/Grid row-->
+
+      </section>
+
+      <hr class="my-5">
+
+      <!--Section: Main features & Quick Start-->
+      <section>
+
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 px-4">
+
+            <h3 class="h3 mb-3 text-center">Experience</h3>
+            {% for exp in Experience %}
+            <!--row-->
+            <div class="row">
+              <div class="col-1 mr-3">
+                <i class="fas fa-code fa-2x indigo-text"></i>
+              </div>
+              <div class="col-10">
+                <h5 class="feature-title">{{exp.title}}</h5>
+                <p >Periode: {{exp.periodeStart}} - {{exp.periodeStart}}</p>
+                <p class="grey-text">Details: {{exp.info}}</p>
+              </div>
+            </div>
+            <!--/row-->
+            <div style="height:30px"></div>
+            {% endfor %}
+
+          </div>
+          <!--/Grid column-->
+          
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 px-4">
+              
+            <h3 class="h3 mb-3 text-center">Education</h3>
+            
+            {% for dip in diploma %}
+            <!--row-->
+            <div class="row">
+              <div class="col-1 mr-3">
+                <i class="fas fa-graduation-cap fa-2x cyan-text"></i>
+              </div>
+              <div class="col-10">
+                <h5 class="feature-title">{{dip.nameDiploma}}</h5>
+                <p >Diploma Institute: {{dip.InstituteDiploma}}</p>
+                <p class="grey-text">Diploma year: {{dip.yearDiploma}}</p>
+              </div>
+            </div>
+            <!--/row-->
+            <div style="height:30px"></div>
+            {% endfor %}
+
+          </div>
+          <!--/Grid column-->
+
+
+        </div>
+        <!--/Grid row-->
+
+      </section>
+      <!--Section: Main features & Quick Start-->
+
+    </div>
+  </main>
+{% endblock content %}
